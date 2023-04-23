@@ -1,6 +1,6 @@
 import { Typography , Row, Col, Statistic} from 'antd'
 import { Link } from 'react-router-dom';
-import { useGetCryptosQuery } from '../services/cryptoAPI';
+import { useGetCryptosQuery } from '../services/cryptoApi';
 import {News, Cryptocurrencies, Loader} from '../components';
 import millify from 'millify';
 

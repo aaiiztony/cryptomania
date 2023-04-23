@@ -10,7 +10,8 @@ const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(false);
   // to store the screen size value
   const [screenSize, setScreenSize] = useState(undefined);
-  //useffect to trigger handleResize function when the window is resized
+
+  //useffect to trigger handleResize function at mount for once as [] and then to remove it when the component unmounts
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
 
@@ -22,6 +23,7 @@ const Navbar = () => {
     }
   }, [])
   
+  //triggeres everytime screenSize changes
   useEffect(() => {
     if(screenSize<= 800){
       setActiveMenu(false);

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Exchanges = () => {
   return (
-    <div>Exchanges</div>
+    <div>Sorry, you don't have a running premium plan to access this!</div>
   )
 }
 
