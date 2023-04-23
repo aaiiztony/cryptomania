@@ -1,8 +1,11 @@
+import { Spin } from 'antd'
 import React from 'react'
 
 const Loader = () => {
   return (
-    <div>Loader</div>
+    <div className='loader'>
+      <Spin/>
+    </div>
   )
 }
 

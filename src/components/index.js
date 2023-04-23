@@ -1,19 +1,8 @@
-import Navbar from './Navbar';
-import CryptoDetails from "./CryptoDetails";
-import Cryptocurrencies from "./Cryptocurrencies";
-import Exchanges from "./Exchanges";
-import Homepage from "./Homepage";
-import LineChart from "./LineChart";
-import Loader from "./Loader";
-import News from "./News";
-
-export {
-  CryptoDetails,
-Cryptocurrencies,
-Exchanges,
-Homepage,
-LineChart,
-Loader,
-Navbar,
-News
-}
+export { default as CryptoDetails } from "./CryptoDetails";
+export { default as Cryptocurrencies } from "./Cryptocurrencies";
+export { default as Exchanges } from "./Exchanges";
+export { default as Homepage } from "./Homepage";
+export { default as LineChart } from "./LineChart";
+export { default as Loader } from "./Loader";
+export { default as Navbar } from './Navbar';
+export { default as News } from "./News";
