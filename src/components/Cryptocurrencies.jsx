@@ -16,7 +16,7 @@ const Cryptocurrencies = ({simplified}) => {
   const [cryptos, setCryptos] = useState();
 
   //to store the user search-input
-  const [searchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   //useeffect runs whenever cryptosList (Showmore link) or the searchterm (input element) is triggered
   useEffect(() => {
@@ -36,6 +36,7 @@ const Cryptocurrencies = ({simplified}) => {
         <div className="search-crypto">
         <input
         placeholder='Search Crypto'
+        onChange={(e)=> setSearchTerm(e.target.value.toLowerCase())}
         />
       </div>
       )}
