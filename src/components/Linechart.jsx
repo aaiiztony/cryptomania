@@ -1,7 +1,23 @@
 import { Col, Typography, Row} from 'antd';
 import React from 'react';
 import  { Line } from 'react-chartjs-2';
-
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Legend,
+  Tooltip,
+} from 'chart.js';
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Legend,
+  Tooltip,
+);
 
 const {Title} = Typography;
 
@@ -16,8 +32,9 @@ const Linechart = ({coinHistory, currentPrice, coinName}) => {
   }
   
   for (let i=0; i<coinHistory?.data?.history?.length; i+=1){
-    coinTimeStamp.push(new Date(coinHistory?.data?.history[i].timestamp).toLocaleDateString());
+    coinTimeStamp.push(new Date(coinHistory?.data?.history[i].timestamp).toLocaleTimeString());
   }
+  console.log(coinTimeStamp)
   //data array to pass to the Line 
   const data = {
     labels: coinTimeStamp,
@@ -25,23 +42,19 @@ const Linechart = ({coinHistory, currentPrice, coinName}) => {
       {
         label:'Price in USD',
         data: coinPrice,
-        fill:false,
-        backgroundColor: '#0071bd',
         borderColor: '#0071bd',
+        backgroundColor: '#0071bd',
       },
     ],
   };
 
   //options object to pass to the Line 
   const options = {
-    scales : {
-      yAxes: [ 
-        {  
-          ticks:{        
-            beginAtZero: true,
-          },
-        },
-      ],
+      scales: {
+        y: {
+          ticks:{
+          beginAtZero: true
+        }}
     },
   };
 
@@ -54,7 +67,7 @@ const Linechart = ({coinHistory, currentPrice, coinName}) => {
         <Title level={3} className='current-price'>Current {coinName} Price: ${currentPrice}</Title>
       </Col>
     </Row>
-    {/* <Line data={data} options={options}/> */}
+    <Line data={data} options={options}/>
     </>
   )
 }

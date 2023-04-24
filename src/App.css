@@ -293,10 +293,12 @@ padding: 0px 20px;
 }
 .news-card{
   min-height: 300px !important;
+  background-color: aliceblue !important;
 }
 .news-image-container{
   display: flex !important;
   justify-content: space-between !important;
+  flex-direction: row-reverse;
 }
 .news-title{
 width: 70%;
@@ -371,9 +373,16 @@ width: 70%;
 }
 
 .footer {
-  background-color: #001529;
+  background-color: whitesmoke;
   display: flex;
   flex-direction: column;
   padding: 20px;
   align-items: center;
+}
+
+.og-img{
+  margin: 0 10px 0 0;
+  object-fit: contain;
+  height: 20%;
+  border-radius: 100%;
 }

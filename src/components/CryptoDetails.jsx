@@ -1,12 +1,14 @@
 import { Col, Row, Typography, Select } from 'antd';
 import millify from 'millify';
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import {MoneyCollectOutlined,  DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, CheckOutlined, NumberOutlined, ThunderboltOutlined } from '@ant-design/icons';
 import {useGetCryptoDetailsQuery, useGetCryptoHistoryQuery} from '../services/cryptoApi';
 import {Loader, Linechart} from '../components';
 import HTMLReactParser from 'html-react-parser';
 
+                        //coinHistory data timestamp is stuck in 1970
+                        
 //extracting component elements
 const {Title, Text} = Typography;
 const {Option} = Select;
@@ -16,11 +18,14 @@ const CryptoDetails = () => {
   // extracting coinId from the url of the site as /:coinId in route (App.jsx)
   const {coinId}  = useParams();
   
-  const [timeperiod, setTimePeriod] = useState('7d');
+  const [timeperiod, setTimeperiod] = useState('7d');
   const {data, isFetching} = useGetCryptoDetailsQuery(coinId);
-  const {data : coinHistory} = useGetCryptoHistoryQuery(coinId, timeperiod);
+  const {data : coinHistory} = useGetCryptoHistoryQuery({coinId, timeperiod});;
+
+  const handleTimeChange = (value)=> setTimeperiod(value);
 
   const cryptoDetails = data?.data.coin;
+  
   if(isFetching)return <Loader/>
 
   // we create time_array to manage time 
@@ -43,8 +48,6 @@ const CryptoDetails = () => {
     { title: 'Total Supply', value: `$ ${cryptoDetails?.supply?.total && millify(cryptoDetails?.supply?.total)}`, icon: <ExclamationCircleOutlined /> },
     { title: 'Circulating Supply', value: `$ ${cryptoDetails?.supply?.circulating && millify(cryptoDetails?.supply?.circulating)}`, icon: <ExclamationCircleOutlined /> },
   ];
-
-
   return (
     <Col 
     className='coin-detail-container'>
@@ -57,7 +60,7 @@ const CryptoDetails = () => {
       <Select
       className='select-timeperiod'
       defaultValue='7d'
-      onChange={(value)=> setTimePeriod(value)}
+      onChange={handleTimeChange}
       placeholder='Select Interval'>
         {times.map((time)=><Option key={`timeperiod-${time}`}>{time}</Option>)}
       </Select>
@@ -109,7 +112,7 @@ const CryptoDetails = () => {
         <Col className="coin-links">
           <Title level={3} className="coin-details-heading">{cryptoDetails.name} Links</Title>
         {cryptoDetails.links?.map((link)=>(
-          <Row className="coin-link" key={`coin-link-${link.name}`}>
+          <Row className="coin-link" key={`coin-link-${link.type}${link.name}`}>
             <Title level={5} className='link-name'>
               {link.types}
             </Title>
