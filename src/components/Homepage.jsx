@@ -35,7 +35,7 @@ const Homepage = () => {
         <Title level={3} className='show-more'><Link to="/cryptocurrencies">Show more</Link></Title>
       </div> 
       <Cryptocurrencies simplified/>
-      <hr style={{marginTop:'1rem'}}/>
+      <hr style={{margin:'2rem 0 0 0'}}/>
       <div className="home-heading-container">
         <Title level={2} className='home-title'>Latest Crypto News</Title>
         <Title level={3} className='show-more'><Link to="/news">Show more</Link></Title>

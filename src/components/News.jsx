@@ -12,16 +12,16 @@ const News = ({simplified}) => {
   const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
 
   const {data} = useGetCryptosQuery(100);
-  const {data : newsData} = useGetCryptosNewsQuery({category:newsCategory, count:simplified?6:12});
+  const {data : newsData, isFetching} = useGetCryptosNewsQuery({category:newsCategory, count:simplified?6:12});
 
-  if (!newsData?.value) return <Loader/>
+  if (isFetching) return <Loader/>
   return (
     <Row gutter={[24,24]}>
       {!simplified &&(
         <Col span={24}>
+          <div className="select-news">
           <Select
           showSearch
-          className="select-news"
           placeholder="Select a Crypto"
           optionFilterProp="children"
           onChange={(value)=> setNewsCategory(value)}
@@ -29,6 +29,7 @@ const News = ({simplified}) => {
             <Option value='Cryptocurrency'>Cryptocurrency</Option>
             {data?.data?.coins?.map((coin, i)=>(<Option key={`${coin.name}+${i}`} value={coin.name}>{coin.name}</Option>))}
           </Select>
+          </div>
         </Col>
       )}
       {newsData.value.map((news, i)=>(

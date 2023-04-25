@@ -24,7 +24,7 @@ const App = () => {
               </div>
             </Layout>
         <div className="footer">
-        <Typography.Title level={5} style={{textAlign: 'center' }}>Copyright © 2023 &nbsp;
+        <Typography.Title level={5} style={{textAlign: 'center'}}>Copyright © 2023 &nbsp;
           <Link to="/">
             Cryptomania Inc.
           </Link> <br />
