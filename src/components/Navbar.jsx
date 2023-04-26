@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import {Typography, Avatar, Menu} from "antd";
+import {Typography, Avatar, Menu, Button} from "antd";
 import {Link} from "react-router-dom";
 import logo from "../images/logo.png";
-import { HomeOutlined, BulbOutlined, MoneyCollectOutlined, FundOutlined } from '@ant-design/icons';
-import MenuItem from 'antd/es/menu/MenuItem';
+import { HomeOutlined, BulbOutlined, MoneyCollectOutlined, FundOutlined, MenuOutlined } from '@ant-design/icons';
 
+//CHNAGE THE MENUOUTLINED BUTTON WITH SOME FONT-AWESOME ICON
 const Navbar = () => {
   //to check if menu is open or not
   const [activeMenu, setActiveMenu] = useState(false);
@@ -63,6 +63,10 @@ const Navbar = () => {
         <Typography.Title level={3} className='logo'>
          <Link to="/">Cryptomania</Link>
         </Typography.Title>
+         <Button theme="button_dark" className='menu-control-container'
+         onClick={()=>setActiveMenu(!activeMenu)}>
+         <MenuOutlined />
+         </Button>
         </div>
         {activeMenu && (
         <Menu theme='dark' items={menuItem}>
