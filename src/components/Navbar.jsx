@@ -61,7 +61,7 @@ const Navbar = () => {
       <div className="logo-container">
         <Avatar src={logo}/>
         <Typography.Title level={3} className='logo'>
-         <Link to="/">Cryptomania</Link>
+         <Link to="/">Cryptomanya</Link>
         </Typography.Title>
          <Button theme="button_dark" className='menu-control-container'
          onClick={()=>setActiveMenu(!activeMenu)}>
