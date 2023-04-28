@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import { useGetCryptosQuery } from '../services/cryptoApi';
 import {News, Cryptocurrencies, Loader} from '../components';
 import millify from 'millify';
-import LoadingBar from "react-top-loading-bar";
-import { useState } from 'react';
 
 const {Title} = Typography;
 const Homepage = () => {
