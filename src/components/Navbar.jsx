@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {Typography, Avatar, Menu, Button} from "antd";
 import {Link} from "react-router-dom";
 import logo from "../images/logo.png";
-import { HomeOutlined, BulbOutlined, MoneyCollectOutlined, FundOutlined, MenuOutlined } from '@ant-design/icons';
+import { HomeOutlined, BulbOutlined, MoneyCollectOutlined, FundOutlined, MenuOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 
 //CHNAGE THE MENUOUTLINED BUTTON WITH SOME FONT-AWESOME ICON
 const Navbar = () => {
@@ -63,13 +63,12 @@ const Navbar = () => {
         <Typography.Title level={3} className='logo'>
          <Link to="/">Cryptomanya</Link>
         </Typography.Title>
-         <Button theme="button_dark" className='menu-control-container'
+         <Button icon={<MenuOutlined/>} ghost  className='menu-control-container'
          onClick={()=>setActiveMenu(!activeMenu)}>
-         <MenuOutlined />
          </Button>
         </div>
         {activeMenu && (
-        <Menu theme='dark' items={menuItem}>
+        <Menu style={{background:"#001d66", color:"white"}} items={menuItem}>
         </Menu>)}
       </div>
   )

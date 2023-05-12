@@ -12,7 +12,7 @@ const App = () => {
           <Navbar />
         </div>
         <div className="main">
-            <Layout>
+            <Layout style={{background:"#e6f7ff"}}>
               <div className="routes">
                 <Routes>
                   <Route exact path="/" element={<Homepage/>}/>
@@ -23,7 +23,8 @@ const App = () => {
                 </Routes>
               </div>
             </Layout>
-        <div className="footer">
+      <hr style={{margin:'0 1.5rem'}}/>
+        <div className="footer" style={{background:"#e6f7ff"}}>
         <Typography.Title level={5} style={{textAlign: 'center'}}>Copyright © 2023 &nbsp;
           <Link to="/">
             Cryptomania Inc.

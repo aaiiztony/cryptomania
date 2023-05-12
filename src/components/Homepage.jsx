@@ -16,11 +16,7 @@ const Homepage = () => {
   if (isFetching){return <Loader/>}
   return (
     <>
-    {/* <LoadingBar
-    color='red'
-    progress={progress}
-    onLoaderFinished={() => setProgress(0)}/> */}
-     <Title level={3} className="heading">Statistics Worlwide</Title>
+    <Title level={3} className="heading">Statistics Worlwide</Title>
       <Row>
         <Col span={12}><Statistic title="Total Crypto" value={globalStat.total}/></Col>
         <Col span={12}><Statistic title="Total Market Cap" value={millify(globalStat.totalMarketCap)}/></Col>

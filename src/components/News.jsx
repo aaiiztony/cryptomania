@@ -24,6 +24,7 @@ const News = ({simplified}) => {
           showSearch
           placeholder="Select a Crypto"
           optionFilterProp="children"
+          style={{width: "min(400px, 100%)"}}
           onChange={(value)=> setNewsCategory(value)}
           filterOption={(input, option)=> option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
             <Option value='Cryptocurrency'>Cryptocurrency</Option>
@@ -40,27 +41,35 @@ const News = ({simplified}) => {
         key={`${news.url}+${i}`}>
         <Card
         hoverable
-        className='news-card'>
+        className='news-card'
+        style={{height:"min(300px, 30vh)"}}>
           <a
           href={news.url}
           target='_blank'
-          rel='noreferrer'>
+          rel='noreferrer'
+          >
+          <div className="flexbox">
             <div className="news-image-container">
+              <img 
+              src={news?.image?.thumbnail?.contentUrl}
+              style={{display:`${!(news?.image?.thumbnail?.contentUrl)?"none":"block"}`}}
+              className='og-img'  
+              alt='news_image'/>
               <Title
               className='news-title'
+              style={{width:`${!(news?.image?.thumbnail?.contentUrl)?"100%":"normal"}`}}
               level={4}
               >
                 {news.name}
               </Title>
-              <img src={news?.image?.thumbnail?.contentUrl} className='og-img'  alt=''/>
               </div>
-              <p>{news.description.length>100?`${news.description.substring(0, 100)}...` : news.description}</p>
               <div className="provider-container">
                 <div>
                   <Avatar src={news.provider[0]?.image?.thumbnail?.contentUrl} alt={`${news.name}-avatar`}></Avatar>&nbsp;
                   <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
                 </div>
               </div>
+          </div>
           </a>
         </Card>
         </Col>

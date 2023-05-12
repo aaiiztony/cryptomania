@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Loader from './Loader';
 import { useGetCryptosQuery } from '../services/cryptoApi';
+import { SearchOutlined } from '@ant-design/icons';
+import Search from 'antd/es/input/Search';
 
 const Cryptocurrencies = ({simplified}) => {
   //count var to display only 10 cards when the component mounts
@@ -34,13 +36,13 @@ const Cryptocurrencies = ({simplified}) => {
     <>
       {!simplified &&(
         <div className="search-crypto">
-        <Input
+        <Search
         placeholder='Search Crypto'
         onChange={(e)=> setSearchTerm(e.target.value.toLowerCase())}
         />
       </div>
       )}
-      <Row gutter={[32,32]} className='crypto-card-container'>
+      <Row gutter={[64,32]} className='crypto-card-container'>
         {cryptos?.map((currency)=>(
           <Col key={currency.uuid}
           xs={24}
@@ -50,6 +52,7 @@ const Cryptocurrencies = ({simplified}) => {
           <Link key={currency.uuid} to={`/crypto/${currency.uuid}`}>
           <Card
           title={`${currency.rank}. ${currency.name}`}
+          style={{background:"#b5ddff", borderRadius:"1.15rem"}}
           hoverable
           extra={
           <img 

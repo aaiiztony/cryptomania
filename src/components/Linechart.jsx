@@ -34,7 +34,6 @@ const Linechart = ({coinHistory, currentPrice, coinName}) => {
   for (let i=0; i<coinHistory?.data?.history?.length; i+=1){
     coinTimeStamp.push(new Date(coinHistory?.data?.history[i].timestamp).toLocaleTimeString());
   }
-  console.log(coinTimeStamp)
   //data array to pass to the Line 
   const data = {
     labels: coinTimeStamp,
