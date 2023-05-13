@@ -2,16 +2,19 @@ import React, { useEffect, useState } from 'react';
 import {Typography, Avatar, Menu, Button} from "antd";
 import {Link} from "react-router-dom";
 import logo from "../images/logo.png";
-import { HomeOutlined, BulbOutlined, MoneyCollectOutlined, FundOutlined, MenuOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { HomeOutlined, BulbOutlined, MoneyCollectOutlined, FundOutlined,MenuOutlined } from '@ant-design/icons';
 
 //CHNAGE THE MENUOUTLINED BUTTON WITH SOME FONT-AWESOME ICON
 const Navbar = () => {
+
   //to check if menu is open or not
   const [activeMenu, setActiveMenu] = useState(false);
+
+
   // to store the screen size value
   const [screenSize, setScreenSize] = useState(undefined);
 
-  //useffect to trigger handleResize function at mount for once as [] and then to remove it when the component unmounts
+  //useffect to trigger handleResize function at mount for once as [] and then to remove it when the component unmounts.
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
 
@@ -59,9 +62,11 @@ const Navbar = () => {
   return (
     <div className='nav-container'>
       <div className="logo-container">
-        <Avatar src={logo}/>
-        <Typography.Title level={3} className='logo'>
-         <Link to="/">Cryptomanya</Link>
+        {/* <Avatar src={logo} size='large' draggable/> */}
+        <Typography.Title level={3}className='logo'>
+         <Link to="/">Crypt
+         <Avatar src={logo} size='small' draggable/>
+         manya</Link>
         </Typography.Title>
          <Button icon={<MenuOutlined/>} ghost  className='menu-control-container'
          onClick={()=>setActiveMenu(!activeMenu)}>
@@ -69,7 +74,8 @@ const Navbar = () => {
         </div>
         {activeMenu && (
         <Menu style={{background:"#001d66", color:"white"}} items={menuItem}>
-        </Menu>)}
+        </Menu>
+        )}
       </div>
   )
 }

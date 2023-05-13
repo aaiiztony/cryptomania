@@ -33,7 +33,7 @@ a:hover{
 }
 
 .main{
-  flex: 0.8;
+  flex: 1;
   width: 100%;
   
 }
@@ -51,17 +51,15 @@ a:hover{
 }
 
 .logo-container{
-  /* background-color:var(--navy_blue); */
   background-color:var(--bg-layout);
   display: flex;
-  padding: 20px;
+  min-height: 9ch;
   align-items: center;
-  width: 100%;
-}
-.logo{
-  margin:0 0 0 15px;
+  justify-content: space-between;
+  
 }
 .logo a{
+  padding: 0 15px;
  color: white;
  font-family: 'Sora', sans-serif;
 }
@@ -69,7 +67,7 @@ a:hover{
   display: none !important;
   position: absolute !important;
   right: 25px !important;
-  top: 20px !important;
+  top: 17px !important;
   font-size: 1.25rem !important; 
   border: none !important; 
 }
@@ -307,7 +305,7 @@ padding: 0px 20px;
 .news-image-container{
   display: flex !important;
   justify-content: space-between !important;
-  flex-direction: row-reverse;
+  flex-direction: row;
 }
 
 .news-image-container .img{
