@@ -1,4 +1,4 @@
-import { Select, Typography, Row, Col, Avatar, Card } from 'antd';
+import { Select, Typography, Row, Col, Card } from 'antd';
 import moment from 'moment/moment';
 import React, {useState} from 'react';
 import Loader from './Loader';
@@ -9,11 +9,9 @@ const {Text, Title} = Typography;
 const {Option} = Select;
 
 const News = ({simplified}) => {
-  const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
-
   const {data} = useGetCryptosQuery(100);
+  const [newsCategory,setNewsCategory] = useState('BTC')
   const {data : newsData, isFetching} = useGetCryptosNewsQuery({category:newsCategory, count:simplified?6:12});
-
   if (isFetching) return <Loader/>
   return (
     <Row gutter={[24,24]}>
@@ -33,40 +31,38 @@ const News = ({simplified}) => {
           </div>
         </Col>
       )}
-      {newsData.value.map((news, i)=>(
+      {newsData.news.map((news, i)=>(
         <Col
         xs={24}
         sm={12}
         lg={8}
-        key={`${news.url}+${i}`}>
+        key={`${news.Title}+${i}`}>
         <Card
         hoverable
         className='news-card'
         style={{height:"min(300px, 30vh)"}}>
           <a
-          href={news.url}
+          href={news.Url}
           target='_blank'
           rel='noreferrer'
           >
           <div className="flexbox">
-            <div className="news-image-container">
-              <img 
-              src={news?.image?.thumbnail?.contentUrl}
-              style={{display:`${!(news?.image?.thumbnail?.contentUrl)?"none":"block"}`}}
+               <img 
+              src={news?.Image}
+              style={{display:`${!(news?.Image)?"none":"block"}`}}
               className='og-img'  
               alt='news_image'/>
               <Title
               className='news-title'
-              style={{width:`${!(news?.image?.thumbnail?.contentUrl)?"100%":"normal"}`}}
+              style={{width:`${!(news?.Image)?"100%":"normal"}`}}
               level={4}
               >
-                {news.name}
+                {news.Title.slice(0,50)+'...'}
               </Title>
-              </div>
               <div className="provider-container">
                 <div>
-                  <Avatar src={news.provider[0]?.image?.thumbnail?.contentUrl} alt={`${news.name}-avatar`}></Avatar>&nbsp;
-                  <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
+                  {/* <Avatar src={news?.Image} alt={`${news.Title}-avatar`}></Avatar>&nbsp; */}
+                  <Text>{moment(news.PublishedOn).startOf('ss').fromNow()}</Text>
                 </div>
               </div>
           </div>

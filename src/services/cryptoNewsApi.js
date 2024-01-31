@@ -21,7 +21,7 @@ export const cryptoNewsApi = createApi({
     endpoints: (builder)=>({
         // to get a list of the coins rankwise
         getCryptosNews: builder.query({
-            query: ({category, count})=> createRequest(`/search?q=${category}&safeSearch=Off&textFormat=Raw&freshness=Day&count=${count}`),
+            query: ({category,count})=> createRequest(`/crypto?batchSize=${count}&token=${category}&languages=en`),
         }),
     })
 })

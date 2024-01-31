@@ -7,10 +7,10 @@ import millify from 'millify';
 const {Title} = Typography;
 const Homepage = () => {
   //destructuring to colect data and isfetching state from the custom hook
-  const {data, isFetching} = useGetCryptosQuery(10);
+  const {data, isFetching} = useGetCryptosQuery(25);
 
   // defining a varibale to store the data
-  const globalStat = data?.data?.stats;
+  const globalStat = data?.data?.stats ;
 
   //adding loader component while fetching data
   if (isFetching){return <Loader/>}
@@ -34,7 +34,7 @@ const Homepage = () => {
         <Title level={2} className='home-title'>Latest Crypto News</Title>
         <Title level={3} className='show-more'><Link to="/news">Show more</Link></Title>
       </div> 
-      <News simplified/>
+      {/* <News simplified/> */}
     </>
   )
 }
